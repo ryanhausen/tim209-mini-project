@@ -5,6 +5,7 @@ from sklearn.neighbors import KNeighborsRegressor
 
 class Regressor:
     def __init__(self, params:dict):
+        self.params
         self.setup(params)
 
     def setup(self, params:dict):
@@ -55,7 +56,7 @@ class Model_KnnRegression(Regressor):
         super().__init__(params)
 
     def setup(self, params:dict):
-        self._model = KNeighborsRegressor()
+        self._model = KNeighborsRegressor(n_neighbors=params['n'])
 
     def fit(self, x:np.ndarray, y:np.ndarray):
         self._fitted_model = self._model.fit(x, y)
@@ -71,4 +72,4 @@ class Model_KnnRegression(Regressor):
         pass
 
     def get_name(self):
-        return 'K Nearest Neighbors'
+        return 'K Nearest Neighbors: k={}'.format(self.params['n'])
