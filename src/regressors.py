@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 
 class Regressor:
     def __init__(self, params:dict):
-        this.setup(params)
+        self.setup(params)
 
     def setup(self, params:dict):
         raise NotImplementedError('setup')
@@ -15,11 +15,33 @@ class Regressor:
     def predict(self, x:np.ndarray):
         raise NotImplementedError('predict')
 
-    def print_params(self):
-        raise NotImplementedError('print_params')
+    def get_learned_features(self):
+        raise NotImplementedError('get_learned_features')
 
     def generate_plots(self, save_location='.'):
         raise NotImplementedError('generate_plots')
 
-class LinearRegression(Regressor):
-    None
+class Model_LinearRegression(Regressor):
+    def __init__(self, params:dict):
+        super().__init__(params)
+        self._model = None
+        self._fitted_model = None
+
+    def setup(self, params:dict):
+        print('Setup')
+        self._model = LinearRegression()
+        print(self._model)
+
+    def fit(self, x:np.ndarray, y:np.ndarray):
+        self._fitted_model = self._model.fit(x, y)
+
+    def predict(self, x:np.ndarray) -> np.ndarray:
+        return self._fitted_model.predict(x)
+
+    def get_learned_features(self) -> np.ndarray:
+        if self._fitted_model:
+            return np.array([self._fitted_model.coef_, 
+                             self._fitted_model.intercept_])
+    
+    def generate_plots(self, save_location='.'):
+        pass
