@@ -101,7 +101,7 @@ class ForestFires:
 
         # use the log of area as recommended in the dataset description
         y = data['area'].values[1:].astype(np.float64)
-        #y = np.log10(y, where=y>0)
+        y = np.log10(y, where=y>0)
 
         return (x, y)
 
