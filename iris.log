@@ -1,0 +1,40 @@
+logistic regression results:
+using one predictor at a time:
+top two predictors: 
+petal_width accuracy: 0.9
+petal_length accuracy: 0.9666666666666667
+using all predictors:
+accuracy 0.933333
+confusion matrix 
+ [[10  0  0]
+ [ 0  8  2]
+ [ 0  0 10]] 
+
+KNN results:
+optimal k is: 5
+accuracy 1.000000
+confusion matrix 
+ [[10  0  0]
+ [ 0 10  0]
+ [ 0  0 10]]
+LDA results:
+accuracy 1.000000
+confusion matrix 
+ [[10  0  0]
+ [ 0 10  0]
+ [ 0  0 10]] 
+
+QDA results:
+accuracy 1.000000
+confusion matrix 
+ [[10  0  0]
+ [ 0 10  0]
+ [ 0  0 10]] 
+
+Decision Tree results:
+accuracy 0.933333
+confusion matrix 
+ [[10  0  0]
+ [ 0  9  1]
+ [ 0  1  9]] 
+

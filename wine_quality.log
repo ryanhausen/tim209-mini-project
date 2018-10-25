@@ -1,0 +1,55 @@
+logistic regression results:
+using one predictor at a time:
+top two predictors: 
+sulphates accuracy: 0.509375
+alcohol accuracy: 0.525
+using all predictors:
+accuracy 0.581250
+confusion matrix 
+ [[  0   0   1   1   0   0]
+ [  0   0  10   1   0   0]
+ [  1   0 105  30   0   0]
+ [  0   0  49  79   0   0]
+ [  0   0   2  36   2   0]
+ [  0   0   0   2   1   0]] 
+
+KNN results:
+optimal k is: 1
+accuracy 0.596875
+confusion matrix 
+ [[ 0  0  1  1  0  0]
+ [ 1  0  6  3  1  0]
+ [ 1  4 87 33 10  1]
+ [ 0  5 34 79  9  1]
+ [ 0  0  3 13 24  0]
+ [ 0  0  0  1  1  1]]
+LDA results:
+accuracy 0.590625
+confusion matrix 
+ [[ 0  0  1  1  0  0]
+ [ 2  0  8  1  0  0]
+ [ 1  2 97 34  2  0]
+ [ 0  2 46 75  4  1]
+ [ 0  0  2 21 17  0]
+ [ 0  0  0  2  1  0]] 
+
+QDA results:
+accuracy 0.590625
+confusion matrix 
+ [[ 0  0  1  1  0  0]
+ [ 0  2  7  2  0  0]
+ [ 0  3 84 45  4  0]
+ [ 0  3 33 86  6  0]
+ [ 0  0  0 20 17  3]
+ [ 0  0  0  2  1  0]] 
+
+Decision Tree results:
+accuracy 0.606250
+confusion matrix 
+ [[ 0  1  0  0  1  0]
+ [ 1  1  5  4  0  0]
+ [ 0  5 92 34  5  0]
+ [ 0  3 29 75 15  6]
+ [ 0  0  3 11 25  1]
+ [ 0  0  0  1  1  1]] 
+
