@@ -32,6 +32,13 @@ confusion matrix
  [ 0  0 10]] 
 
 Decision Tree results:
+accuracy 0.966667
+confusion matrix 
+ [[10  0  0]
+ [ 0  9  1]
+ [ 0  0 10]] 
+
+SVM results:
 accuracy 0.933333
 confusion matrix 
  [[10  0  0]
