@@ -1,6 +1,8 @@
 
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LassoCV
+from sklearn.linear_model import RidgeCV
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
@@ -108,3 +110,43 @@ class Model_SupportVectorMachine(Regressor):
 
     def get_name(self):
         return 'Support Vector Machine'
+
+class Model_Lasso(Regressor):
+    def __init__(self, params:dict):
+        super().__init__(params)
+
+    def setup(self, params:dict):
+        self._model = LassoCV()
+
+    def fit(self, x:np.ndarray, y:np.ndarray):
+        self._fitted_model = self._model.fit(x, y)
+
+    def predict(self, x:np.ndarray) -> np.ndarray:
+        return self._fitted_model.predict(x)
+
+    def get_learned_features(self) -> np.ndarray:
+        if self._fitted_model:
+            return np.array([])
+
+    def get_name(self):
+        return 'Lasso'
+
+class Model_RidgeRession(Regressor):
+    def __init__(self, params:dict):
+        super().__init__(params)
+
+    def setup(self, params:dict):
+        self._model = RidgeCV()
+
+    def fit(self, x:np.ndarray, y:np.ndarray):
+        self._fitted_model = self._model.fit(x, y)
+
+    def predict(self, x:np.ndarray) -> np.ndarray:
+        return self._fitted_model.predict(x)
+
+    def get_learned_features(self) -> np.ndarray:
+        if self._fitted_model:
+            return np.array([])
+
+    def get_name(self):
+        return 'Ridge Regression'

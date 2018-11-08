@@ -20,7 +20,9 @@ def main():
     models = [reg.Model_LinearRegression(dict()),
               reg.Model_KnnRegression({'n':10}),
               reg.Model_DecisionTree(dict()),
-              reg.Model_SupportVectorMachine(dict())]
+              reg.Model_SupportVectorMachine(dict()),
+              reg.Model_Lasso(dict()),
+              reg.Model_RidgeRession(dict())]
 
     for data in [reg_data.Abalone, reg_data.ForestFires, reg_data.WineQuality]:
         x, y = data.get_preprocessed_XY()
@@ -29,12 +31,12 @@ def main():
         print('==============================')
         print(data.get_name())
         results = []
-        
-        
-        f, a = plt.subplots(nrows=2, ncols=2, figsize=(20,20))
+
+
+        f, a = plt.subplots(nrows=3, ncols=2, figsize=(20,20))
         a = np.array(a).flatten()
         plt.suptitle(data.get_name(), fontsize=24)
-        
+
         for i, model in enumerate(models):
 
             mse, r2 = [], []
@@ -48,13 +50,11 @@ def main():
                 y_hat = model.predict(x_test)
 
                 poly = np.poly1d(np.polyfit(y_hat, y_test, 1))
-                
-                
 
                 mse.append(mean_squared_error(y_test, y_hat))
                 r2.append(r2_score(y_test, y_hat, multioutput=None))
                 a[i].scatter(y_hat, y_test, alpha=0.5, color='b')
-                a[i].plot([y_hat.min(), y_hat.max()], 
+                a[i].plot([y_hat.min(), y_hat.max()],
                           poly([y_hat.min(), y_hat.max()]),
                           color='r',
                           alpha=0.5)
@@ -62,8 +62,8 @@ def main():
                 a[i].set_ylabel('Label')
                 a[i].set_xlim(y_test.min(), y_test.max())
                 a[i].set_ylim(y_test.min(), y_test.max())
-      
-            
+
+
             name = model.get_name()
             mse = np.mean(mse)
             r2 = np.mean(r2)
@@ -75,8 +75,8 @@ def main():
             print('Report for {}'.format(name))
             print('MSE: {}'.format(mse))
             print('R2: {}'.format(r2))
-            
-            
+
+
         f.tight_layout()
         plt.subplots_adjust(top=0.95)
         plt.savefig('{}.png'.format(data.get_name()))
